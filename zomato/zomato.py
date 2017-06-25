@@ -24,7 +24,7 @@ def scrape():
 
 	iters = int(total / 20) + 1
 	print iters
-	for i in range(1):
+	for i in range(iters):
 		# payload['category'] = category
 		payload['start'] = (i*20)
 		payload['count'] = 20
@@ -32,7 +32,7 @@ def scrape():
 		response = requests.get('https://developers.zomato.com/api/v2.1/search', params=payload, headers=headers).json()['restaurants']
 		# restaurants = restaurants + response['restaurants']
 		print response
-	f = open('a.txt','r+')
-	f.write(str(response))
+		f = open('a.txt','a')
+		f.write(str(response))
 
 scrape()
